@@ -1,0 +1,40 @@
+tested with:
+bastion
+phantom brave
+disgaea
+disgaea 2
+disgaea 4
+disgaea 5
+the longest 5 minutes
+rpg maker mv
+trails in the sky first chapter
+trails in the sky second chapter
+trails in the sky the third
+lost sphear
+final fantasy 4 after years
+final fantasy 6
+shadows of adam
+last dream
+dragon fantasy book 1
+dragon fantasy book 2
+hyper light drifter
+pier solar
+timespinner
+transistor
+goken
+earthlock
+stardew valley
+battle chasers nightwar
+
+unused:
+undertale
+crosscode
+iconoclasts
+
+----------------------
+
+Computer\HKEY_CLASSES_ROOT\steam\Shell\ in the registry controls the program to open when using steam:// browser protocol
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Classes\steam
+"C:\Program Files (x86)\Steam\Steam.exe" "%1" is the default program
+
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve contains steam info paths
