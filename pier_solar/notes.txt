@@ -1,0 +1,12 @@
+u16 money
+save file: 0x9fe
+linux64dbg: 0x891a70 (heap)
+linux64: 0x9cf8b0 off 0xfb8b0 (heap)
+
+u16 exp
+linux64:
+	1st: 0x9cf708
+	2nd: 0x9cf72a
+	3rd: 0x9cf74c
+	4th: 0x9cf76e
+	5th: 0x9cf790
