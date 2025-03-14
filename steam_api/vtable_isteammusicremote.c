@@ -1,0 +1,41 @@
+#include "steam.h"
+
+static void *vtable_ISteamMusicRemote001[] = {
+    SteamAPI_ISteamMusicRemote_RegisterSteamMusicRemote,
+    SteamAPI_ISteamMusicRemote_DeregisterSteamMusicRemote,
+    SteamAPI_ISteamMusicRemote_BIsCurrentMusicRemote,
+    SteamAPI_ISteamMusicRemote_BActivationSuccess,
+    SteamAPI_ISteamMusicRemote_SetDisplayName,
+    SteamAPI_ISteamMusicRemote_SetPNGIcon_64x64,
+    SteamAPI_ISteamMusicRemote_EnablePlayPrevious,
+    SteamAPI_ISteamMusicRemote_EnablePlayNext,
+    SteamAPI_ISteamMusicRemote_EnableShuffled,
+    SteamAPI_ISteamMusicRemote_EnableLooped,
+    SteamAPI_ISteamMusicRemote_EnableQueue,
+    SteamAPI_ISteamMusicRemote_EnablePlaylists,
+    SteamAPI_ISteamMusicRemote_UpdatePlaybackStatus,
+    SteamAPI_ISteamMusicRemote_UpdateShuffled,
+    SteamAPI_ISteamMusicRemote_UpdateLooped,
+    SteamAPI_ISteamMusicRemote_UpdateVolume,
+    SteamAPI_ISteamMusicRemote_CurrentEntryWillChange,
+    SteamAPI_ISteamMusicRemote_CurrentEntryIsAvailable,
+    SteamAPI_ISteamMusicRemote_UpdateCurrentEntryText,
+    SteamAPI_ISteamMusicRemote_UpdateCurrentEntryElapsedSeconds,
+    SteamAPI_ISteamMusicRemote_UpdateCurrentEntryCoverArt,
+    SteamAPI_ISteamMusicRemote_CurrentEntryDidChange,
+    SteamAPI_ISteamMusicRemote_QueueWillChange,
+    SteamAPI_ISteamMusicRemote_ResetQueueEntries,
+    SteamAPI_ISteamMusicRemote_SetQueueEntry,
+    SteamAPI_ISteamMusicRemote_SetCurrentQueueEntry,
+    SteamAPI_ISteamMusicRemote_QueueDidChange,
+    SteamAPI_ISteamMusicRemote_PlaylistWillChange,
+    SteamAPI_ISteamMusicRemote_ResetPlaylistEntries,
+    SteamAPI_ISteamMusicRemote_SetPlaylistEntry,
+    SteamAPI_ISteamMusicRemote_SetCurrentPlaylistEntry,
+    SteamAPI_ISteamMusicRemote_PlaylistDidChange,
+};
+
+VtableEntry vtable_ISteamMusicRemote[] = {
+    {1, vtable_ISteamMusicRemote001, sizeof(vtable_ISteamMusicRemote001), 0},
+    {0, NULL, 0, 0},
+};
