@@ -1,0 +1,162 @@
+#pragma once
+
+#include "steamtypes.h"
+
+typedef enum {
+	k_EXboxOrigin_A,
+	k_EXboxOrigin_B,
+	k_EXboxOrigin_X,
+	k_EXboxOrigin_Y,
+	k_EXboxOrigin_LeftBumper,
+	k_EXboxOrigin_RightBumper,
+	k_EXboxOrigin_Menu, // Start
+	k_EXboxOrigin_View, // Back
+	k_EXboxOrigin_LeftTrigger_Pull,
+	k_EXboxOrigin_LeftTrigger_Click,
+	k_EXboxOrigin_RightTrigger_Pull,
+	k_EXboxOrigin_RightTrigger_Click,
+	k_EXboxOrigin_LeftStick_Move,
+	k_EXboxOrigin_LeftStick_Click,
+	k_EXboxOrigin_LeftStick_DPadNorth,
+	k_EXboxOrigin_LeftStick_DPadSouth,
+	k_EXboxOrigin_LeftStick_DPadWest,
+	k_EXboxOrigin_LeftStick_DPadEast,
+	k_EXboxOrigin_RightStick_Move,
+	k_EXboxOrigin_RightStick_Click,
+	k_EXboxOrigin_RightStick_DPadNorth,
+	k_EXboxOrigin_RightStick_DPadSouth,
+	k_EXboxOrigin_RightStick_DPadWest,
+	k_EXboxOrigin_RightStick_DPadEast,
+	k_EXboxOrigin_DPad_North,
+	k_EXboxOrigin_DPad_South,
+	k_EXboxOrigin_DPad_West,
+	k_EXboxOrigin_DPad_East,
+} EXboxOrigin;
+
+typedef enum {
+	k_EControllerActionOrigin_None,
+	k_EControllerActionOrigin_A,
+	k_EControllerActionOrigin_B,
+	k_EControllerActionOrigin_X,
+	k_EControllerActionOrigin_Y,
+	k_EControllerActionOrigin_LeftBumper,
+	k_EControllerActionOrigin_RightBumper,
+	k_EControllerActionOrigin_LeftGrip,
+	k_EControllerActionOrigin_RightGrip,
+	k_EControllerActionOrigin_Start,
+	k_EControllerActionOrigin_Back,
+	k_EControllerActionOrigin_LeftPad_Touch,
+	k_EControllerActionOrigin_LeftPad_Swipe,
+	k_EControllerActionOrigin_LeftPad_Click,
+	k_EControllerActionOrigin_LeftPad_DPadNorth,
+	k_EControllerActionOrigin_LeftPad_DPadSouth,
+	k_EControllerActionOrigin_LeftPad_DPadWest,
+	k_EControllerActionOrigin_LeftPad_DPadEast,
+	k_EControllerActionOrigin_RightPad_Touch,
+	k_EControllerActionOrigin_RightPad_Swipe,
+	k_EControllerActionOrigin_RightPad_Click,
+	k_EControllerActionOrigin_RightPad_DPadNorth,
+	k_EControllerActionOrigin_RightPad_DPadSouth,
+	k_EControllerActionOrigin_RightPad_DPadWest,
+	k_EControllerActionOrigin_RightPad_DPadEast,
+	k_EControllerActionOrigin_LeftTrigger_Pull,
+	k_EControllerActionOrigin_LeftTrigger_Click,
+	k_EControllerActionOrigin_RightTrigger_Pull,
+	k_EControllerActionOrigin_RightTrigger_Click,
+	k_EControllerActionOrigin_LeftStick_Move,
+	k_EControllerActionOrigin_LeftStick_Click,
+	k_EControllerActionOrigin_LeftStick_DPadNorth,
+	k_EControllerActionOrigin_LeftStick_DPadSouth,
+	k_EControllerActionOrigin_LeftStick_DPadWest,
+	k_EControllerActionOrigin_LeftStick_DPadEast,
+	k_EControllerActionOrigin_Gyro_Move,
+	k_EControllerActionOrigin_Gyro_Pitch,
+	k_EControllerActionOrigin_Gyro_Yaw,
+	k_EControllerActionOrigin_Gyro_Roll,
+	k_EControllerActionOrigin_Count
+} EControllerActionOrigin;
+
+typedef enum {
+	k_EControllerSourceMode_None,
+	k_EControllerSourceMode_Dpad,
+	k_EControllerSourceMode_Buttons,
+	k_EControllerSourceMode_FourButtons,
+	k_EControllerSourceMode_AbsoluteMouse,
+	k_EControllerSourceMode_RelativeMouse,
+	k_EControllerSourceMode_JoystickMove,
+	k_EControllerSourceMode_JoystickCamera,
+	k_EControllerSourceMode_ScrollWheel,
+	k_EControllerSourceMode_Trigger,
+	k_EControllerSourceMode_TouchMenu
+} EControllerSourceMode;
+
+typedef uint64 ControllerHandle_t;
+typedef uint64 ControllerActionSetHandle_t;
+typedef uint64 ControllerDigitalActionHandle_t;
+typedef uint64 ControllerAnalogActionHandle_t;
+
+typedef struct ControllerAnalogActionData_t ControllerAnalogActionData_t;
+
+struct ControllerAnalogActionData_t {
+	EControllerSourceMode eMode;
+	float x, y;
+	bool bActive;
+};
+
+typedef struct ControllerDigitalActionData_t ControllerDigitalActionData_t;
+
+struct ControllerDigitalActionData_t {
+	bool bActive;
+	bool bState;
+};
+
+#define ControllerAnalogActionData_t InputAnalogActionData_t
+#define ControllerDigitalActionData_t InputDigitalActionData_t
+#define ControllerMotionData_t InputMotionData_t
+
+typedef void ISteamController;
+
+typedef struct CSteamController CSteamController;
+
+struct CSteamController {
+	CSteamBase base;
+};
+
+S_CLASSAPI bool S_CLASSCALLTYPE SteamAPI_ISteamController_Init(SELF);
+S_CLASSAPI bool S_CLASSCALLTYPE SteamAPI_ISteamController_Shutdown(SELF);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_RunFrame(SELF);
+S_CLASSAPI int32 S_CLASSCALLTYPE SteamAPI_ISteamController_GetConnectedControllers(SELF, ControllerHandle_t *handleOut);
+S_CLASSAPI bool S_CLASSCALLTYPE SteamAPI_ISteamController_ShowBindingPanel(SELF, ControllerHandle_t controllerHandle);
+S_CLASSAPI ControllerActionSetHandle_t S_CLASSCALLTYPE SteamAPI_ISteamController_GetActionSetHandle(SELF, const char *pszActionSetName);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_ActivateActionSet(SELF);
+S_CLASSAPI ControllerActionSetHandle_t S_CLASSCALLTYPE SteamAPI_ISteamController_GetCurrentActionSet(SELF, ControllerHandle_t controllerHandle);
+S_CLASSAPI ControllerActionSetHandle_t S_CLASSCALLTYPE SteamAPI_ISteamController_GetDigitalActionHandle(SELF, const char *pszActionSetName);
+S_CLASSAPI ControllerDigitalActionData_t S_CLASSCALLTYPE SteamAPI_ISteamController_GetDigitalActionData(SELF, ControllerHandle_t controllerHandle, ControllerDigitalActionHandle_t digitalActionHandle);
+S_CLASSAPI int S_CLASSCALLTYPE SteamAPI_ISteamController_GetDigitalActionOrigins(SELF, ControllerHandle_t controllerHandle, ControllerActionSetHandle_t actionSetHandle, ControllerDigitalActionHandle_t digitalActionHandle, EControllerActionOrigin *originsOut);
+S_CLASSAPI ControllerAnalogActionHandle_t S_CLASSCALLTYPE SteamAPI_ISteamController_GetAnalogActionHandle(SELF, const char *pszActionName);
+S_CLASSAPI ControllerAnalogActionData_t S_CLASSCALLTYPE SteamAPI_ISteamController_GetAnalogActionData(SELF, ControllerHandle_t controllerHandle, ControllerAnalogActionHandle_t analogActionHandle);
+S_CLASSAPI int S_CLASSCALLTYPE SteamAPI_ISteamController_GetAnalogActionOrigins(SELF, ControllerHandle_t controllerHandle, ControllerActionSetHandle_t actionSetHandle, ControllerAnalogActionHandle_t analogActionHandle, EControllerActionOrigin *originsOut);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_StopAnalogActionMomentum(SELF);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_TriggerHapticPulse(SELF, ControllerHandle_t controllerHandle, ESteamControllerPad eTargetPad, unsigned short usDurationMicroSec);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_SetOverrideMode(SELF, const char *pchMode);
+S_CLASSAPI bool S_CLASSCALLTYPE SteamController_GetControllerState(SELF, uint32_t index, void *state);
+S_CLASSAPI void S_CLASSCALLTYPE SteamController_SetOverrideMode(SELF, const char *pchMode);
+S_CLASSAPI void S_CLASSCALLTYPE SteamController_TriggerHapticPulse(SELF, ControllerHandle_t controllerHandle, ESteamControllerPad eTargetPad, unsigned short usDurationMicroSec);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_ActivateActionSetLayer(SELF, ControllerHandle_t controllerHandle, ControllerActionSetHandle_t actionSetLayerHandle);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_DeactivateActionSetLayer(SELF, ControllerHandle_t controllerHandle, ControllerActionSetHandle_t actionSetLayerHandle);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_DeactivateAllActionSetLayers(SELF, ControllerHandle_t controllerHandle);
+S_CLASSAPI int S_CLASSCALLTYPE SteamAPI_ISteamController_GetActiveActionSetLayers(SELF, ControllerHandle_t controllerHandle, ControllerActionSetHandle_t *handlesOut);
+S_CLASSAPI const char *S_CLASSCALLTYPE SteamAPI_ISteamController_GetGlyphForActionOrigin(SELF, EControllerActionOrigin eOrigin);
+S_CLASSAPI const char *S_CLASSCALLTYPE SteamAPI_ISteamController_GetStringForActionOrigin(SELF, EControllerActionOrigin eOrigin);
+S_CLASSAPI ControllerMotionData_t S_CLASSCALLTYPE SteamAPI_ISteamController_GetMotionData(SELF, ControllerHandle_t controllerHandle);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_TriggerRepeatedHapticPulse(SELF, ControllerHandle_t controllerHandle, ESteamControllerPad eTargetPad, unsigned short usDurationMicroSec);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_TriggerVibration(SELF, ControllerHandle_t controllerHandle, unsigned short usLeftSpeed, unsigned short usRightSpeed);
+S_CLASSAPI void S_CLASSCALLTYPE SteamAPI_ISteamController_SetLEDColor(SELF, ControllerHandle_t controllerHandle, uint8 nColorR, uint8 nColorG, uint8 nColorB, unsigned int nFlags);
+S_CLASSAPI ESteamInputType S_CLASSCALLTYPE SteamAPI_ISteamController_GetInputTypeForHandle(SELF, ControllerHandle_t controllerHandle);
+S_CLASSAPI ControllerHandle_t S_CLASSCALLTYPE SteamAPI_ISteamController_GetControllerForGamepadIndex(SELF, int nIndex);
+S_CLASSAPI int S_CLASSCALLTYPE SteamAPI_ISteamController_GetGamepadIndexForController(SELF, ControllerHandle_t ulControllerHandle);
+S_CLASSAPI const char *S_CLASSCALLTYPE SteamAPI_ISteamController_GetStringForXboxOrigin(SELF, EXboxOrigin eOrigin);
+S_CLASSAPI const char *S_CLASSCALLTYPE SteamAPI_ISteamController_GetGlyphForXboxOrigin(SELF, EXboxOrigin eOrigin);
+S_CLASSAPI EControllerActionOrigin S_CLASSCALLTYPE SteamAPI_ISteamController_GetActionOriginFromXboxOrigin_(SELF, ControllerHandle_t controllerHandle, EXboxOrigin eOrigin);
+S_CLASSAPI EControllerActionOrigin S_CLASSCALLTYPE SteamAPI_ISteamController_TranslateActionOrigin(SELF, ESteamInputType eDestinationInputType, EControllerActionOrigin eSourceOrigin);
+S_CLASSAPI bool S_CLASSCALLTYPE SteamAPI_ISteamController_GetControllerBindingRevision(SELF, ControllerHandle_t controllerHandle, int *pMajor, int *pMinor);

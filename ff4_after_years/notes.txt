@@ -1,0 +1,61 @@
+Steam Version
+
+Save Format:
+One SAV.BIN inside C:\Users\$USER\AppData\Local\FF4A\0 for saving,
+each of a slave slot goes into a section inside SAV.BIN file so you don't get multiple
+save files if you save to multiple slots
+
+SAV.BIN is (786432) 0xc0000 bytes in size
+Mandatory Data for SAV.BIN:
+0x786400 "The card was initialized"
+
+SAV.BIN partitions the files into save slots and each save slot is
+17136 (0x42f0) bytes, each chapter have 3 save slots except for last chapter
+33 save slots in total (last save slot is quicksave)
+
+struct Stat {
+	// starts at ee0
+	// exp caps at 9999999
+	uint32 exp;
+	// caps at 99
+	uint16 lvl;
+
+	// caps at 9999
+	uint16 maxhp;
+	uint16 curhp;
+	// caps at 999
+	uint16 curmp;
+	uint16 maxmp;
+
+	// starts at 0xffc
+	// caps at 99
+	uint8 str;
+	uint8 sta;
+	uint8 spd;
+	uint8 int;
+	uint8 spr;
+};
+
+next level number is based on current experience and level, if experience is higher than the thing needed to level up
+next level number will be negative and after a battle it will jump up how ever many levels is encapsulated in the experience
+set to 0xffffff to get to lvl 99 immediately
+
+Save slots:
+0x0:    "cd1000\x00BABil":   signature header
+0x14:   uint8(0x22)          check byte for valid save slot
+0x1c:   uint32(checksum)     checksum against bytes [0x24, 0x42cc+0x24], it uses
+                             the bytes at 0x20 (which is fixed) as the end + 0x24
+0x20:   uint32(0x42cc)       size of the save slot minus 0x24
+0xee0:  Status(char[0x10])   stats of characters, each 0x130 bytes apart (EXP, HP, etc)
+0xffc:  Stats(char[0x10])    stats of characters, each 0x130 bytes apart (atk, speed etc)
+0x3a88: uint32(gil)          gil for each chapter, gil are capped to 99999999
+
+The checksum algorithm calculates on the data SaveSlot[0x24:SaveSlot[0x20]+0x24]
+and stores it at 0x1c, if the checksum don't match the save slot is considered
+corrupted and not be able to be loaded. 
+
+SaveNum:   [0,0x20]
+SaveIndex: [0,2]
+
+https://moonlightknighthk.wordpress.com/2013/07/01/cheat-hack-final-fantasy-iv-on-android-hex-edit-save-file/
+has the save offsets

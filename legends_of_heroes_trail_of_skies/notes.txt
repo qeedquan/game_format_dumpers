@@ -1,0 +1,75 @@
+PC version (Steam):
+
+First Chapter:
+Saved games go in "$USERS\Saved Games\FALCON\ED6"
+
+Game save files are fixed size, normal saves are 212,160 bytes
+
+Save File Offsets:
+0x8:     Location of game time, it is 8 bytes long in DOS time format
+0x25c88: Money, it is 4 bytes long but the game caps it to be some number of 9s, it can overflow to
+         negative value
+0x23e40: Start of characters information, the game does not store stats but the level of the character
+         is used to derive the stats. Level is 2 byte value which can be up to 65536 but if one
+         sets it to that the game can corrupt the character and make all their stats to be very weak.
+         To get around this, set the character max level to be 255 and then set it to be 65536, then
+         reload the game, this will bypass some sort of "fixup" so one can get high stats
+------------------------------------
+Second Chapter:
+Game save files changed from the first one, normal saves are 177,184 bytes
+
+The trick with modifying the levels to be 255 then 65536 trick doesn't work anymore.
+We can modify the ED6_DT22.dat file; this file stores all the stats for levels.
+The logic is that it is a lookup table based on your level, ranges from 35 to 100;
+anything outside the range is clamped. the values are signed integer
+
+ED6_DT22.dat Offsets:
+(Estelle)
+Level 35 stat value starts at 0x18CBA
+Level 100 stat value starts at 0x1906f
+
+Save File Offsets:
+0x2534c: Money (4 bytes signed)
+
+0x1f44c: Start location of stats
+------------------------------------
+Third Chapter:
+Game save files changed from first/second one, normal saves are 184,176 bytes in size
+
+ED6_DT22.dat Offsets:
+0x156a4: Start of stats
+
+Fill with 128 bytes of 0x3f to get good stats for Kevin at the start of stats
+
+Save File Offsets:
+0x26bcc: Money (4 bytes signed)
+
+0x1f66c: Start location of stats
+
+Min valid level is 3, max is 150
+Level value can be displayed up to 65536 but the stat data loaded from the ED6_DT22.dat
+is clamped to min and max valid levels
+
+Experience needed to reach next level is calculated by 10*(Level+1)*(Level+1)
+
+sizeof(Stat) = 0x3c
+struct Stat
+{
+  u16 Level;
+  u32 CurHP;
+  u32 MaxHP;
+  u16 CurEP;
+  u16 MaxEP;
+  u16 CP;
+  u16 Status;
+  u32 CurExp;
+  u16 Str;
+  u16 Def;
+  u16 Ats;
+  u16 Spd;
+  u16 Dex;
+  u16 Agl;
+  u16 Mov;
+  u16 Rng;
+  u16 Unk[9];
+};

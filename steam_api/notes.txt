@@ -1,0 +1,181 @@
+https://gitlab.com/Mr_Goldberg/goldberg_emulator
+https://github.com/GloriousEggroll/lsteamclient
+
+----------------------
+
+Works:
+8 bit adventures (rpgmaker)
+another star (custom mono)
+bastion (custom)
+battle chasers nightwar (unity)
+blossom tales 2 (fna)
+bravely default 2 (unreal) 
+cladun x2 (custom)
+disgaea 2 (custom)
+disgaea 4 (custom)
+disgaea 5 (custom)
+disgaea 6 (custom)
+disgaea 7 (custom)
+disgaea (custom)
+dokimon (gamemaker)
+dragon fantasy book 1 (custom)
+dragon fantasy book 2 (custom)
+earthlock (unity)
+enchanted cave 2 (haxe)
+evoland (haxe)
+final fantasy 3 3d remake (custom - sdl/qt)
+final fantasy 4 3d remake (custom - sdl/qt)
+final fantasy 4 after years (custom - sdl/qt)
+final fantasy 6 (unity)
+goken (unity)
+grandia 2 (custom - sdl/d3d)
+grandia (custom - sdl/d3d)
+hyper light drifter (gamemaker)
+la pucelle ragnarok (custom d3d)
+last dream (rpgmaker)
+lost sphear (unity)
+phantom brave (custom)
+phantom brave 2: lost hero (custom)
+pier solar (custom)
+rhapsody a musical adventure (custom d3d)
+rhapsody a musical adventure 2 (custom d3d)
+rpg maker mv (custom)
+setsuna (unity)
+shadows of adam (custom)
+shiren the wanderer: the tower of fortune and the dice of fate (custom)
+siralim ultimate (custom opengl)
+stardew valley (xna)
+starlight legacy (custom)
+the longest 5 minutes (custom)
+the legend of nayuta: boundless trails (custom)
+thimbleweed park (custom)
+timespinner (xna)
+trails in the sky first chapter (custom)
+trails in the sky second chapter (custom)
+trails in the sky the third (custom)
+transistor (monogame)
+ys 1 (custom)
+ys 2 (custom)
+ys the oath in felghana (custom d3d)
+
+Not Working:
+cross tails (unity)
+dragon quest xi (unreal)
+dragon quest 1/2 remake (unreal 4)
+i am setsuna (unity)
+little noah scion of paradise (unity)
+lost sphear (unity)
+lunar story 1 and 2 (criware + custom)
+makai kingdom reclaimed and rebound (custom)
+octopath traveler (unreal)
+octopath traveler 2 (unreal)
+sea of stars (unity)
+soul nomad (custom)
+suikoden (unity)
+tales of symphonia (custom)
+wanderstop (unreal)
+zhp (custom)
+
+Unused:
+8 bit adventures 2 (rpgmaker + nwjs)
+alphadia genesis (unity)
+alterium shift ea (unity)
+another eden (custom)
+arcadian atlas (unity)
+astalon tears of the earth (unity)
+beloved rapture (rpgmaker)
+breath of death 7 (xna)
+breath of death 7: the beginning: reanimated (fna)
+cassette beasts (godot)
+cresent tower (unity)
+chrono cross/radical dreamers (custom)
+coromon (solar2d)
+crosscode (nwjs)
+daydream (unity)
+disc creatures (rpgmaker)
+epic quest (easyrpg)
+everafter falls (unity)
+evering (nwjs)
+excaliburian!! (rpgmaker + nwjs)
+fisherman classic (electron)
+iconoclasts (custom)
+midnight paradise (renpy)
+mirrored soul (godot)
+moonstone island (nwjs)
+oceans heart (solarus)
+our ascent (unity)
+power network tycoon (unity)
+quartet (unity)
+the dragon's prophecy (nodejs)
+the dragon's twilight 3 (rpgmaker)
+the secret of varonis (unity)
+trails of cold steel (custom)
+trails from zero (custom)
+trails to azure (custom)
+tropicalia (rpgmaker + nwjs)
+undertale (custom)
+wings of endless (gamemaker)
+wyvia (unity)
+ys origin (custom)
+
+----------------------
+
+Computer\HKEY_CLASSES_ROOT\steam\Shell\ in the registry controls the program to open when using steam:// browser protocol
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Classes\steam
+"C:\Program Files (x86)\Steam\Steam.exe" "%1" is the default program
+
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve contains steam info paths
+
+*** Unreal
+
+Unreal engine standard save format is called GVAS (binary format)
+
+https://github.com/RyudoSynbios/game-tools-collection
+
+*** Unity
+
+Newer Unity games pack the executables that can be extracted using:
+https://github.com/Perfare/Il2CppDumper
+
+The newer Unity games will have a file "global-metadata.dat" somewhere
+# Extract the data
+Il2CppDumper.exe GameAssembly.dll global-metadata.dat
+
+The tool will generate header/data files that describe the entry points of various C# -> C++ functions in the GameAssembly.dll
+Use Ghidra/IDA to import the GameAssembly.dll file and then use the ghidra.py script provided by Il2CppDumper
+to import those files to map the function names to addresses.
+
+The tool can also generate dummy C# DLLs files that can be viewed in the .NET decompiler.
+There is no code in the dummy DLL, only signatures that give information about data structures and function signatures.
+
+Older unity games do not pack the executables, the game code is usually inside Assembly-Csharp.dll
+
+Avalonia is the UNIX/Linux portable version (executable called ILSpy)
+
+.NET bytecode decompiler
+https://github.com/icsharpcode/ILSpy
+https://github.com/dnSpy/dnSpy
+https://github.com/icsharpcode/AvaloniaILSpy
+
+*** Golberg Steam API
+
+Goldberg steam save files are stored in %USERS%/AppData/Roaming/Goldberg SteamEmu Saves
+
+*** Proton
+
+Proton can be configured to be used inside the Linux Steam UI
+Steam installs proton/games inside $STEAM_PATH/.steam/steam/steamapps/common
+
+# Run from command line
+
+# If steam is installed using snap
+export STEAM_PATH=$HOME/snap/steam/common
+# If steam is installed from valve
+export STEAM_PATH=$HOME
+
+export STEAM_COMPAT_CLIENT_INSTALL_PATH=$STEAM_PATH/.steam/steam
+export STEAM_COMPAT_DATA_PATH=$STEAM_PATH/.steam/steam/steamapps/compatdata/
+"$STEAM_PATH/.steam/steam/steamapps/common/Proton - Experimental/proton" run App.exe
+
+# Proton uses the following path for the Windows root filesystem
+$STEAM_PATH/.local/share/Steam/steamapps/compatdata/pfx/drive_c

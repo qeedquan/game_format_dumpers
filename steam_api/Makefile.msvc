@@ -1,0 +1,23 @@
+CFLAGS=/I Detours/include /D_USRDLL /D_WINDLL /DDETOURS /Z7 /DEBUG:FULL
+
+!ifndef GAME
+GAME=DEFAULT
+!endif
+
+!include games.msvc
+
+# run different msvc developer environment for 32/64 bit before invoking makefile
+win64:
+	set DETOURS_TARGET_PROCESSOR=X64
+	cd Detours/src && $(MAKE)
+	cl $(DEFS) $(CFLAGS) *.c Detours/lib.X64/detours.lib /MT /link /DLL /OUT:steam_api64.dll
+
+win32:
+	cd Detours/src && $(MAKE)
+	cl $(DEFS) $(CFLAGS) *.c Detours/lib.X86/detours.lib /MT /link /DLL /OUT:steam_api.dll
+
+clean:
+	cd Detours && $(MAKE) clean
+	rd /q /s Detours\lib.X86 Detours\bin.X86 2>nul || echo
+	rd /q /s Detours\lib.X64 Detours\bin.X64 2>nul || echo
+	del *.dll *.lib *.obj *.o *.a *.exp *.lib *.ilk *.pdb

@@ -1,0 +1,10 @@
+*** Assets
+
+The assets are in .cpk format
+
+Tools for dumping:
+https://wiki.vg-resource.com/CPK
+https://github.com/wmltogether/CriPakTools/releases
+
+Save format description:
+https://gbatemp.net/threads/save-editing-lunar-remastered-collection.670352/
