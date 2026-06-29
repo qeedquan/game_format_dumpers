@@ -1,0 +1,67 @@
+#include "steam.h"
+
+static void *vtable_ISteamController003[] = {
+    SteamAPI_ISteamController_Init,
+    SteamAPI_ISteamController_Shutdown,
+    SteamAPI_ISteamController_RunFrame,
+    SteamAPI_ISteamController_GetConnectedControllers,
+    SteamAPI_ISteamController_ShowBindingPanel,
+    SteamAPI_ISteamController_GetActionSetHandle,
+    SteamAPI_ISteamController_ActivateActionSet,
+    SteamAPI_ISteamController_GetCurrentActionSet,
+    SteamAPI_ISteamController_GetDigitalActionHandle,
+    SteamAPI_ISteamController_GetDigitalActionData,
+    SteamAPI_ISteamController_GetDigitalActionOrigins,
+    SteamAPI_ISteamController_GetAnalogActionHandle,
+    SteamAPI_ISteamController_GetAnalogActionData,
+    SteamAPI_ISteamController_GetAnalogActionOrigins,
+    SteamAPI_ISteamController_StopAnalogActionMomentum,
+    SteamAPI_ISteamController_TriggerHapticPulse,
+    SteamAPI_ISteamController_TriggerRepeatedHapticPulse,
+};
+
+#define vtable_ISteamController007 vtable_ISteamController008
+
+static void *vtable_ISteamController008[] = {
+    SteamAPI_ISteamController_Init,
+    SteamAPI_ISteamController_Shutdown,
+    SteamAPI_ISteamController_RunFrame,
+    SteamAPI_ISteamController_GetConnectedControllers,
+    SteamAPI_ISteamController_GetActionSetHandle,
+    SteamAPI_ISteamController_ActivateActionSet,
+    SteamAPI_ISteamController_GetCurrentActionSet,
+    SteamAPI_ISteamController_ActivateActionSetLayer,
+    SteamAPI_ISteamController_DeactivateActionSetLayer,
+    SteamAPI_ISteamController_DeactivateAllActionSetLayers,
+    SteamAPI_ISteamController_GetActiveActionSetLayers,
+    SteamAPI_ISteamController_GetDigitalActionHandle,
+    SteamAPI_ISteamController_GetDigitalActionData,
+    SteamAPI_ISteamController_GetDigitalActionOrigins,
+    SteamAPI_ISteamController_GetAnalogActionHandle,
+    SteamAPI_ISteamController_GetAnalogActionData,
+    SteamAPI_ISteamController_GetAnalogActionOrigins,
+    SteamAPI_ISteamController_GetGlyphForActionOrigin,
+    SteamAPI_ISteamController_GetStringForActionOrigin,
+    SteamAPI_ISteamController_StopAnalogActionMomentum,
+    SteamAPI_ISteamController_GetMotionData,
+    SteamAPI_ISteamController_TriggerHapticPulse,
+    SteamAPI_ISteamController_TriggerRepeatedHapticPulse,
+    SteamAPI_ISteamController_TriggerVibration,
+    SteamAPI_ISteamController_SetLEDColor,
+    SteamAPI_ISteamController_ShowBindingPanel,
+    SteamAPI_ISteamController_GetInputTypeForHandle,
+    SteamAPI_ISteamController_GetControllerForGamepadIndex,
+    SteamAPI_ISteamController_GetGamepadIndexForController,
+    SteamAPI_ISteamController_GetStringForXboxOrigin,
+    SteamAPI_ISteamController_GetGlyphForXboxOrigin,
+    SteamAPI_ISteamController_GetActionOriginFromXboxOrigin_,
+    SteamAPI_ISteamController_TranslateActionOrigin,
+    SteamAPI_ISteamController_GetControllerBindingRevision,
+};
+
+VtableEntry vtable_ISteamController[] = {
+    {3, vtable_ISteamController003, sizeof(vtable_ISteamController003), 0},
+    {7, vtable_ISteamController007, sizeof(vtable_ISteamController007), 0},
+    {8, vtable_ISteamController008, sizeof(vtable_ISteamController008), 0},
+    {0, NULL, 0, 0},
+};

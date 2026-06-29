@@ -1,0 +1,260 @@
+[
+	{
+		"name": "DEFAULT",
+		"defs": "-D R_STRUCT_PTR=1",
+		"versions": {
+			"applist": 1,
+			"apps": 8,
+			"appticket": 1,
+			"client": 20,
+			"controller": 8,
+			"friends": 17,
+			"gamesearch": 1,
+			"gameserver": 1,
+			"gameserverapps": 1,
+			"htmlsurface": 5,
+			"http": 3,
+			"input": 5,
+			"inventory": 3,
+			"matchmaking": 9,
+			"matchmakingservers": 2,
+			"music": 1,
+			"musicremote": 1,
+			"networking": 6,
+			"parentalsettings": 1,
+			"parties": 2,
+			"remoteplay": 1,
+			"remotestorage": 14,
+			"screenshots": 3,
+			"ugc": 16,
+			"unifiedmessages": 1,
+			"user": 21,
+			"userstats": 11,
+			"utils": 10,
+			"video": 1,
+			"tv": 1
+		}
+	},
+	{
+		"name": "Crosscode",
+		"versions": {
+			"client": 17,
+			"controller": 6,
+			"user": 19,
+			"utils": 9
+		}
+	},
+	{
+		"name": "Disgaea 1",
+		"versions": {
+			"remotestorage": 12
+		}
+	},
+	{
+		"name": "Disgaea 1",
+		"versions": {
+			"remotestorage": 12
+		}
+	},
+	{
+		"name": "Disgaea 2",
+		"defs": "-D R_STRUCT_PTR=0",
+		"versions": {
+			"remotestorage": 13
+		}
+	},
+	{
+		"name": "Disgaea 4",
+		"versions": {
+			"remotestorage": 14
+		}
+	},
+	{
+		"name": "Disgaea 5",
+		"versions": {
+			"remotestorage": 14
+		}
+	},
+	{
+		"name": "Disgaea 6",
+		"versions": {
+			"applist": 1,
+			"apps": 7,
+			"appticket": 1,
+			"client": 17,
+			"friends": 15,
+			"htmlsurface": 3,
+			"http": 2,
+			"input": 5,
+			"inventory": 1,
+			"matchmaking": 9,
+			"matchmakingservers": 2,
+			"musicremote": 1,
+			"music": 1,
+			"networking": 5,
+			"parentalsettings": 1,
+			"remotestorage": 13,
+			"screenshots": 2,
+			"ugc": 7,
+			"unifiedmessages": 1,
+			"user": 18,
+			"userstats": 11,
+			"utils": 7,
+			"video": 1
+		}
+	},
+	{
+		"name": "Dragon Fantasy 1",
+		"defs": "-D S_CALLTYPE=",
+		"versions": {
+			"remotestorage": 12
+		}
+	},
+	{
+		"name": "Dragon Fantasy 2",
+		"defs": "-D S_CLASSAPI='__attribute__((fastcall))'",
+		"versions": {
+			"remotestorage": 12
+		}
+	},
+	{
+		"name": "Evoland",
+		"versions": {
+			"client": 17,
+			"controller": 7,
+			"user": 20,
+			"utils": 9,
+			"input": 1
+		}
+	},
+	{
+		"name": "Final Fantasy 3",
+		"versions": {
+			"apps": 5,
+			"client": 12,
+			"friends": 13,
+			"http": 2,
+			"matchmaking": 9,
+			"matchmakingservers": 2,
+			"networking": 5,
+			"remotestorage": 11,
+			"screenshots": 2,
+			"unifiedmessages": 1,
+			"user": 17,
+			"userstats": 11,
+			"utils": 6
+		}
+	},
+	{
+		"name": "Final Fantasy 4",
+		"versions": {
+			"apps": 5,
+			"client": 12,
+			"friends": 13,
+			"http": 2,
+			"matchmaking": 9,
+			"matchmakingservers": 2,
+			"networking": 5,
+			"remotestorage": 11,
+			"screenshots": 2,
+			"unifiedmessages": 1,
+			"user": 17,
+			"userstats": 11,
+			"utils": 6
+		}
+	},
+	{
+		"name": "Final Fantasy 4 After Years",
+		"versions": {
+			"apps": 5,
+			"client": 12,
+			"friends": 13,
+			"http": 2,
+			"matchmaking": 9,
+			"matchmakingservers": 2,
+			"networking": 5,
+			"remotestorage": 11,
+			"screenshots": 2,
+			"unifiedmessages": 1,
+			"user": 17,
+			"userstats": 11,
+			"utils": 6
+		}
+	},
+	{
+		"name": "Grandia 2",
+		"versions": {
+			"client": 17,
+			"controller": 7,
+			"input": 1,
+			"user": 20,
+			"utils": 9
+		}
+	},
+	{
+		"name": "Hyperlight Drifter",
+		"defs": "-D R_STRUCT_PTR=0 -D S_CALLTYPE=",
+		"versions": {
+			"client": 17,
+			"controller": 5,
+			"user": 19,
+			"utils": 9
+		}
+	},
+	{
+		"name": "Pier Solar",
+		"defs": "-D R_STRUCT_PTR=0",
+		"versions": {
+			"applist": 1,
+			"apps": 7,
+			"client": 17,
+			"friends": 15,
+			"htmlsurface": 2,
+			"http": 2,
+			"inventory": 1,
+			"matchmaking": 9,
+			"matchmakingservers": 2,
+			"music": 1,
+			"musicremote": 1,
+			"networking": 5,
+			"remotestorage": 12,
+			"screenshots": 2,
+			"ugc": 3,
+			"unifiedmessages": 1,
+			"user": 18,
+			"userstats": 11,
+			"utils": 7,
+			"video": 1
+		}
+	},
+	{
+		"name": "Trails From Zero",
+		"versions": {
+			"applist": 1,
+			"apps": 8,
+			"client": 17,
+			"controller": 8,
+			"friends": 17,
+			"gamesearch": 1,
+			"gameserver": 14,
+			"htmlsurface": 5,
+			"http": 3,
+			"input": 6,
+			"matchmaking": 9,
+			"matchmakingservers": 2,
+			"music": 1,
+			"musicremote": 1,
+			"networking": 6,
+			"parentalsettings": 1,
+			"parties": 2,
+			"remoteplay": 1,
+			"remotestorage": 16,
+			"screenshots": 3,
+			"ugc": 16,
+			"user": 21,
+			"userstats": 12,
+			"utils": 10,
+			"video": 2
+		}
+	}
+]
