@@ -1,0 +1,6 @@
+all:
+    cl nmplmem.cpp /std:c++17 /link /dll /out:NmplDLLMemoryInterface.dll
+    cl -D_CRT_SECURE_NO_WARNINGS /Zi /fsanitize=address nmpl.c ioutil.c /link /debug /out:msnmpl.exe
+
+clean:
+    del *.exe *.lib *.exp *.obj *.pdb

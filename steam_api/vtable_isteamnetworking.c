@@ -1,0 +1,57 @@
+#include "steam.h"
+
+static void *vtable_ISteamNetworking005[] = {
+    SteamAPI_ISteamNetworking_SendP2PPacket,
+    SteamAPI_ISteamNetworking_IsP2PPacketAvailable,
+    SteamAPI_ISteamNetworking_ReadP2PPacket,
+    SteamAPI_ISteamNetworking_AcceptP2PSessionWithUser,
+    SteamAPI_ISteamNetworking_CloseP2PSessionWithUser,
+    SteamAPI_ISteamNetworking_CloseP2PChannelWithUser,
+    SteamAPI_ISteamNetworking_GetP2PSessionState,
+    SteamAPI_ISteamNetworking_AllowP2PPacketRelay,
+    SteamAPI_ISteamNetworking_CreateListenSocketUint32,
+    SteamAPI_ISteamNetworking_CreateP2PConnectionSocket,
+    SteamAPI_ISteamNetworking_CreateConnectionSocketUint32,
+    SteamAPI_ISteamNetworking_DestroySocket,
+    SteamAPI_ISteamNetworking_DestroyListenSocket,
+    SteamAPI_ISteamNetworking_SendDataOnSocket,
+    SteamAPI_ISteamNetworking_IsDataAvailableOnSocket,
+    SteamAPI_ISteamNetworking_RetrieveDataFromSocket,
+    SteamAPI_ISteamNetworking_IsDataAvailable,
+    SteamAPI_ISteamNetworking_RetrieveData,
+    SteamAPI_ISteamNetworking_GetSocketInfoUint32,
+    SteamAPI_ISteamNetworking_GetListenSocketInfoUint32,
+    SteamAPI_ISteamNetworking_GetSocketConnectionType,
+    SteamAPI_ISteamNetworking_GetMaxPacketSize,
+};
+
+static void *vtable_ISteamNetworking006[] = {
+    SteamAPI_ISteamNetworking_SendP2PPacket,
+    SteamAPI_ISteamNetworking_IsP2PPacketAvailable,
+    SteamAPI_ISteamNetworking_ReadP2PPacket,
+    SteamAPI_ISteamNetworking_AcceptP2PSessionWithUser,
+    SteamAPI_ISteamNetworking_CloseP2PSessionWithUser,
+    SteamAPI_ISteamNetworking_CloseP2PChannelWithUser,
+    SteamAPI_ISteamNetworking_GetP2PSessionState,
+    SteamAPI_ISteamNetworking_AllowP2PPacketRelay,
+    SteamAPI_ISteamNetworking_CreateListenSocket,
+    SteamAPI_ISteamNetworking_CreateP2PConnectionSocket,
+    SteamAPI_ISteamNetworking_CreateConnectionSocket,
+    SteamAPI_ISteamNetworking_DestroySocket,
+    SteamAPI_ISteamNetworking_DestroyListenSocket,
+    SteamAPI_ISteamNetworking_SendDataOnSocket,
+    SteamAPI_ISteamNetworking_IsDataAvailableOnSocket,
+    SteamAPI_ISteamNetworking_RetrieveDataFromSocket,
+    SteamAPI_ISteamNetworking_IsDataAvailable,
+    SteamAPI_ISteamNetworking_RetrieveData,
+    SteamAPI_ISteamNetworking_GetSocketInfo,
+    SteamAPI_ISteamNetworking_GetListenSocketInfo,
+    SteamAPI_ISteamNetworking_GetSocketConnectionType,
+    SteamAPI_ISteamNetworking_GetMaxPacketSize,
+};
+
+VtableEntry vtable_ISteamNetworking[] = {
+    {5, vtable_ISteamNetworking005, sizeof(vtable_ISteamNetworking005), 0},
+    {6, vtable_ISteamNetworking006, sizeof(vtable_ISteamNetworking006), 0},
+    {0, NULL, 0, 0},
+};

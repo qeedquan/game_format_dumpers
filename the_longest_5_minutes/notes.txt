@@ -1,0 +1,17 @@
+The Longest 5 Minutes (Steam Version)
+
+The stats and money get wiped out with every new chapter, offsets gets changed too
+though stats structure doesn't get changed, can just search for it in a hex editor
+
+struct Stats (approximate)
+{
+	// makes up curhp, curmp, maxhp, maxmp and something else
+	s32 health[7];
+	s32 attack;
+	s32 defense;
+	s32 strength;
+	s32 magic;
+	s32 vitality;
+	s32 agility;
+	s32 luck;	
+};
